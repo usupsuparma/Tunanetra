@@ -46,6 +46,14 @@ if __name__ == '__main__':
             dist = distance()
             print ("Measured Distance = %.1f cm" % dist)
             time.sleep(1)
+            if dist <10:
+                print("bahaya")
+            elif dist >=10 and dist < 20:
+                print("hati2")
+            elif dist >= 20 :
+                print("aman")
+            else:
+                print("error")
  
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
