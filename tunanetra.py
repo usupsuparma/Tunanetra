@@ -43,9 +43,8 @@ def distance():
 if __name__ == '__main__':
     try:
         while True:
-            #jarak 
+            #jarak
             dist = distance()
-            print(dist)
             print ("Measured Distance = %.1f cm" % dist)
             time.sleep(1)
             if dist <10:
