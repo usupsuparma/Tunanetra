@@ -45,7 +45,6 @@ if __name__ == '__main__':
         while True:
             #jarak v
             dist = distance()
-            print(dist)
             print ("Measured Distance = %.1f cm" % dist)
             time.sleep(1)
             if dist <10:
