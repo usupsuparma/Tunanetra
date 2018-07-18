@@ -42,7 +42,7 @@ def get_range():
     #Jaraknya masih dalam hitungan bolak-balik, bagi dua untuk tahu jarak ke halangan
     distance = distance / 2
 
-    #selesai
+    #selesai d
     return distance
 
 #Panggil fungsi untuk menghitung jarak  dan cetak hasilnya
