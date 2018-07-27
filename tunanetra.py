@@ -1,53 +1,69 @@
-#Libraries
-import RPi.GPIO as GPIO
 import time
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)  # set penomeran board ke mode broadcom
+GPIO.setwarnings(False)
 
-#GPIO Mode (BOARD / BCM)
-GPIO.setmode(GPIO.BCM)
+# Set mode pin sebagai input untuk trigger, dan output untuk echo
+GPIO_TRIGGER = 23 #sesuaikan pin trigger
+GPIO_ECHO = 24 #sesuaikan pin echo
+GPIO.setup(GPIO_TRIGGER,GPIO.OUT)
+GPIO.setup(GPIO_ECHO,GPIO.IN)
 
-#set GPIO Pins
-GPIO_TRIGGER = 18
-GPIO_ECHO = 24
+# Set trigger ke False (Low) untuk awal
+GPIO.output(GPIO_TRIGGER, GPIO.LOW)
 
-#set GPIO direction (IN / OUT)
-GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
-GPIO.setup(GPIO_ECHO, GPIO.IN)
-
-def distance():
-    # set Trigger to HIGH
+#Fungsi untuk menapatkan jarak
+def get_range():
+    # Kirim 10us sinyal high ke trigger
     GPIO.output(GPIO_TRIGGER, True)
-
-    # set Trigger after 0.01ms to LOW
     time.sleep(0.00001)
+
+    #Stop trigger
     GPIO.output(GPIO_TRIGGER, False)
+    timeout_counter = int(time.time())
+    start = time.time()
 
-    StartTime = time.time()
-    StopTime = time.time()
+    #dapatkan waktu start
+    while GPIO.input(GPIO_ECHO)==0 and (int(time.time()) - timeout_counter) < 3:
+        start = time.time()
 
-    # save StartTime
-    while GPIO.input(GPIO_ECHO) == 0:
-        StartTime = time.time()
+    timeout_counter = int(time.time())
+    stop = time.time()
+    #dapatkan waktu stop
+    while GPIO.input(GPIO_ECHO)==1 and (int(time.time()) - timeout_counter) < 3:
+        stop = time.time()
 
-    # save time of arrival
-    while GPIO.input(GPIO_ECHO) == 1:
-        StopTime = time.time()
+    #Hitung waktu tempuh bolak-balik
+    elapsed = stop-start
 
-    # time difference between start and arrival
-    TimeElapsed = StopTime - StartTime
-    # multiply with the sonic speed (34300 cm/s)
-    # and divide by 2, because there and back
-    distance = (TimeElapsed * 34300) / 2
+    #Hitung jarak, waktu tempuh dikalikan dengan kecepata suara (dalam centi meter)
+    distance = elapsed * 34320
 
+    #Jaraknya masih dalam hitungan bolak-balik, bagi dua untuk tahu jarak ke halangan
+    distance = distance / 2
+
+    #selesai
     return distance
+
+
 
 if __name__ == '__main__':
     try:
         while True:
-            dist = distance()
+            #jarak
+            dist = get_range()
             print ("Measured Distance = %.1f cm" % dist)
             time.sleep(1)
+            if dist <10:
+                print("bahaya")
+            elif dist >=10 and dist < 20:
+                print("hati2")
+            elif dist >= 20 :
+                print("aman")
+            else:
+                print("error")
 
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
-        print("Measurement stopped by User")
+        print(" Measurement stopped by User ")
         GPIO.cleanup()
