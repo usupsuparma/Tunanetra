@@ -3,7 +3,7 @@
 import serial, string, time
 
 output = (" ")
-ser = serial.Serial('/dev/ttyACM0', 9600, 8, 'N', 1, timeout=1)
+ser = serial.Serial('/dev/ttyACM0', 9600)
 
 try:
     while True:
