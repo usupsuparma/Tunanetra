@@ -10,7 +10,7 @@ GPIO.setup(GPIO_TRIGGER,GPIO.OUT)
 GPIO.setup(GPIO_ECHO,GPIO.IN)
 
 # Set trigger ke False (Low) untuk awal
-GPIO.output(GPIO_TRIGGER, GPIO.LOW)
+GPIO.output(GPIO_TRIGGER, GPIO.HIGH)
 
 #Fungsi untuk menapatkan jarak
 def get_range():
