@@ -10,7 +10,7 @@ try:
         try:
             print("----")
             while output != (""):
-                output = ser.readline()
+                output =str(int(ser.readline()))
                 print(output)
             output = (" ")
         except KeyboardInterrupt:
