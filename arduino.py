@@ -16,7 +16,7 @@ ser = serial.Serial('/dev/ttyACM0', 9600, 8, 'N', 1, timeout=1)
 try:
     while True:
         for i in range(0,256):
-            print unichr(i)
+            print(unichr(i))
             ser.write(chr(i))
             time.sleep(1)
 except KeyboardInterrupt:
