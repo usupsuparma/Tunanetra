@@ -12,7 +12,7 @@ ser = serial.Serial('/dev/ttyACM0', 9600)
 
 try:
     while True:
-        output =str(int(ser.readline()))
+        output =int(ser.readline())
         print("data jarak: ", output)
         if output > 50:
             print(output)
