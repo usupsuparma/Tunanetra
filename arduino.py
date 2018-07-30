@@ -7,13 +7,12 @@ ser = serial.Serial('/dev/ttyACM0', 9600)
 
 try:
     while True:
-        try:
-            print("----")
-            while output != (""):
-                output =str(int(ser.readline()))
-                print(output)
+        print("----")
+        while output != (""):
+            output =str(int(ser.readline()))
+            print(output)
             output = (" ")
-        except KeyboardInterrupt:
-            print("keluar dari program")
 except KeyboardInterrupt:
     print("keluar dari program euy")
+    # gunakan ctrl + c
+    GPIO.cleanup()
