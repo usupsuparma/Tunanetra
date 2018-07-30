@@ -12,8 +12,8 @@ ser = serial.Serial('/dev/ttyACM0', 9600)
 
 try:
     while True:
-        if output != " ":
-            output =str(int(ser.readline()))
+        output =str(int(ser.readline()))
+        if output != " ":            
             if output <= 50:
                 print(output)
                 print("jarak bahaya")
@@ -25,3 +25,4 @@ try:
 except KeyboardInterrupt:
     # gunakan ctrl + c
     GPIO.cleanup()
+    break()

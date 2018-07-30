@@ -15,4 +15,5 @@ try:
 except KeyboardInterrupt:
     print("keluar dari program euy")
     # gunakan ctrl + c
+    break()
     GPIO.cleanup()
