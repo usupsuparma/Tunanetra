@@ -90,7 +90,7 @@ try:
             cv2.imshow("Take Picture", frame)
             sleep(2)
             cv2.imwrite("user.jpg",frame)
-    		konek = Klasifikasi("user.jpg")
+            konek = Klasifikasi("user.jpg")
     		if konek == "none":
     			print("Data tidak ditemukan")
     		else:
