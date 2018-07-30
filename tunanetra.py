@@ -88,7 +88,6 @@ try:
             vidio = cv2.VideoCapture(0)
             cond , frame = vidio.read()
             cv2.imshow("Take Picture", frame)
-            sleep(2)
             cv2.imwrite("user.jpg",frame)
             konek = Klasifikasi("user.jpg")
             if konek == "none":
