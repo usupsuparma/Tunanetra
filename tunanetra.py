@@ -91,28 +91,25 @@ try:
             sleep(2)
             cv2.imwrite("user.jpg",frame)
             konek = Klasifikasi("user.jpg")
-    		if konek == "none":
-    			print("Data tidak ditemukan")
-    		else:
-    			show = konek.identifikasi()
-    			print(show[0:6])
-    			if show[0:6] == "person":
-    				print("manusia terdeteksi")
-    			elif show[0:9] == "motorbike":
-    				print("motor terdeteksi")
-    			elif show[0:3] == "car":
-    				print("mobil terdeteksi")
-    			elif show[0:5] == "chair":
-    				print("kursi terdeteksi")
-
-    		# menampilkan hasil
-    		# cv2.imshow("hasil", show)
-
-    		print("hasil uji: ",show)
-    		os.remove("user.jpg")
-    		jumlah += 1
+            if konek == "none":
+                print("Data tidak ditemukan")
             else:
-                print("data jarak tidak ada")
+                show = konek.identifikasi()
+                print(show[0:6])
+                if show[0:6] == "person":
+                    print("manusia terdeteksi")
+                elif show[0:9] == "motorbike":
+                    print("motor terdeteksi")
+                elif show[0:3] == "car":
+                    print("mobil terdeteksi")
+                elif show[0:5] == "chair":
+                    print("kursi terdeteksi")
+
+            print("hasil uji: ",show)
+            os.remove("user.jpg")
+            jumlah += 1
+        else:
+            print("data jarak tidak ada")
 
 except KeyboardInterrupt:
     # gunakan ctrl + c
