@@ -1,11 +1,12 @@
 import time
 import RPi.GPIO as GPIO
-import serial, string, time
+import  string, time
 import numpy as np
 import argparse
 import cv2
 import os
 import time
+from serial import Serial
 
 
 
