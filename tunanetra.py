@@ -13,12 +13,11 @@ ser = serial.Serial('/dev/ttyACM0', 9600)
 try:
     while True:
         output =str(int(ser.readline()))
-        if output != " ":
-            if output <= 50:
-                print(output)
-                print("jarak bahaya")
-            elif output >= 50:
-                print("jarak aman")
+        if output <= 50:
+            print(output)
+            print("jarak bahaya")
+        elif output >= 50:
+            print("jarak aman")
         else:
             print("data jarak tidak ada")
 
