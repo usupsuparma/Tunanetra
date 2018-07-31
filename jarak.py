@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
-import serial, string, time
+import string, time
 import time
 import RPi.GPIO as GPIO
+from serial import serial
 
 output = (" ")
 ser = serial.Serial('/dev/ttyACM0', 9600)
