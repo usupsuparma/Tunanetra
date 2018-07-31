@@ -1,6 +1,7 @@
 #!/usr/bin/python df
 
-import string, time, serial
+import string, time
+import serial
 import time
 import RPi.GPIO as GPIO
 
