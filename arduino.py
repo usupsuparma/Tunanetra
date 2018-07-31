@@ -11,7 +11,7 @@ try:
     while True:
         print("----")
         while output != (""):
-            output =str(int(ser.readline()))
+            output =int(ser.readline())
             print(output)
             output = (" ")
 except KeyboardInterrupt:
