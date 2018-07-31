@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 
 output = (" ")
-ser = serial.Serial('/dev/ttyACM0', 9600)
+ser =serial.Serial('/dev/ttyACM0', 9600)
 
 try:
     while True:
