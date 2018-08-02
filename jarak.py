@@ -1,17 +1,10 @@
 #!/usr/bin/python df
-
-import string, time
 import serial
+import string, time
 import time
 
 
-ser =serial.Serial('/dev/ttyACM0', 9600)
-
-while True:
-    try:
-        output = int(ser.readline())
-        print("hasil terbaca: ",output)
-    except KeyboardInterrupt as e:
-        print("Exit Program")
-        print("============")
-        break
+#ser =serial.Serial('/dev/ttyACM0', 9600)
+ser = serial.Serial('/dev/ttyACM0', 9600)
+output = int(ser.readline())
+print("hasil terbaca: ",output)
