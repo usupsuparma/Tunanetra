@@ -1,5 +1,5 @@
 int pTrig = 8;
-int pEcho = 7;
+int pEcho = 6;
 int buzz = 4;
 long durasi;
 char dataString[50] = {0};
