@@ -5,7 +5,6 @@ import serial
 import time
 
 
-output = (" ")
 ser =serial.Serial('/dev/ttyACM0', 9600)
 
 while True:
