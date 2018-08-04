@@ -1,23 +1,21 @@
-int pTrig = 8;
-int pEcho = 6;
-int buzz = 4;
+int pTrig = 11;
+int pEcho = 4;
 long durasi;
-char dataString[50] = {0};
-int a = 0;
+int percobaan= 1;
+int jarak= 0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(pTrig, OUTPUT);
   pinMode(pEcho, INPUT);
-  pinMode(buzz, OUTPUT);
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   
-  int jarak = trig();
-  sprintf(dataString,"%02X",jarak);
+  jarak = trig();
   Serial.println(jarak);
   delay(1000);
 }
