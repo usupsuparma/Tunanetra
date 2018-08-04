@@ -1,6 +1,5 @@
 #!/usr/bin/python df
 import serial
-from serial import serial
 import string, time
 import time
 
